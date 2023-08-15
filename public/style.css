@@ -1,0 +1,41 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap");
+
+:root {
+    --main: #ee4266;
+    --main-s1: #d9244a;
+    --main-s2: #e81541;
+}
+
+body {
+    margin: 0;
+    font-family: "Inter", Tahoma, Geneva, Verdana, sans-serif;
+    background: #fbfbfb;
+}
+
+a,
+a:visited {
+    color: var(--main-s2);
+    text-decoration: none;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #e0e0e0;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0.2;
+    }
+
+    50% {
+        opacity: 0.1;
+    }
+
+    100% {
+        opacity: 0.2;
+    }
+}
