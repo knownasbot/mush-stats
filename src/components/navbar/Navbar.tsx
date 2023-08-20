@@ -22,20 +22,33 @@ const NavContainer = styled.nav`
     }
 `;
 
+const IconContainer = styled.div`
+    display: inline-flex;
+    gap: 10px;
+
+    @media (min-width: 600px) {
+        width: 50%;
+        align-items: center;
+        justify-content: space-between;
+    }
+`;
+
 export default function Header() {
     return (
         <NavContainer>
-            <Link
-                to="/"
-                style={{
-                    display: "inline-flex",
-                    gap: "10px",
-                    alignItems: "center",
-                }}
-            >
-                <Logo />
-            </Link>
-            <GithubButton />
+            <IconContainer>
+                <Link
+                    to="/"
+                    style={{
+                        display: "inline-flex",
+                        gap: "10px",
+                        alignItems: "center",
+                    }}
+                >
+                    <Logo />
+                </Link>
+                <GithubButton />
+            </IconContainer>
             <SearchBar />
         </NavContainer>
     );
