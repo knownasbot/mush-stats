@@ -19,7 +19,12 @@ module.exports = {
     plugins: ["react-refresh", "@typescript-eslint", "prettier"],
     ignorePatterns: [".eslintrc.cjs", "vite.config.ts"],
     rules: {
-        "prettier/prettier": "error",
+        "prettier/prettier": [
+            "error",
+            {
+                endOfLine: "auto",
+            },
+        ],
         "react-refresh/only-export-components": [
             "warn",
             { allowConstantExport: true },
