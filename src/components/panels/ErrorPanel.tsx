@@ -67,7 +67,7 @@ export default function ErrorPanel({ status }: { status: number }) {
                     <b>Ainda com problemas? Nos avise:</b>
                     <div>
                         <a
-                            href="#"
+                            href="https://forum.mush.com.br/topic/163214/desenvolvi-um-website-para-consultar-perfis-do-mush"
                             style={{
                                 display: "inline-block",
                                 maxWidth: "300px",
@@ -76,7 +76,7 @@ export default function ErrorPanel({ status }: { status: number }) {
                                 whiteSpace: "nowrap",
                             }}
                         >
-                            https://forum.mush.com.br/topic/148149/atualiza%C3%A7%C3%A3o-pvp-v1-4-0/1
+                            https://forum.mush.com.br/topic/163214/desenvolvi-um-website-para-consultar-perfis-do-mush
                         </a>
                     </div>
                 </div>

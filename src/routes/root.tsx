@@ -43,8 +43,11 @@ export default function Root() {
 
                 <p>
                     Qualquer problema, avise-nos no{" "}
-                    <a href="#">tópico do projeto no fórum</a> ou na aba{" "}
-                    <a href={repository + "/issues"}>Issues</a> do projeto.
+                    <a href="https://forum.mush.com.br/topic/163214/desenvolvi-um-website-para-consultar-perfis-do-mush">
+                        tópico do projeto no fórum
+                    </a>{" "}
+                    ou na aba <a href={repository + "/issues"}>Issues</a> do
+                    projeto.
                 </p>
             </Panel>
         </RootContainer>
