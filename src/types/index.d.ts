@@ -23,8 +23,12 @@ declare interface ProfileInfo {
         username: string;
         banned?: boolean;
     };
+    tag?: {
+        name: string;
+        color: string;
+    };
     rank: {
-        title: string;
+        name: string;
         color: string;
     };
     clan?: {

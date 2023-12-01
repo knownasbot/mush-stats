@@ -80,6 +80,7 @@ const DateInfo = styled.div`
 export default function ProfilePanel({
     account,
     clan,
+    tag,
     rank,
     createdAt,
     joinedAt,
@@ -113,7 +114,10 @@ export default function ProfilePanel({
                             display: "inline-flex",
                         }}
                     >
-                        <RankTag rankcolor={rank.color}>{rank.title}</RankTag>
+                        {tag && tag.name != rank.name && (
+                            <RankTag rankcolor={tag.color}>{tag.name}</RankTag>
+                        )}
+                        <RankTag rankcolor={rank.color}>{rank.name}</RankTag>
 
                         {clan?.tag && (
                             <ClanTag tagcolor={clan.color}>

@@ -41,7 +41,7 @@ export default function Profile() {
             username: "...",
         },
         rank: {
-            title: "Membro",
+            name: "Membro",
             color: "",
         },
         stats: [],
@@ -78,7 +78,8 @@ export default function Profile() {
                                 username: body.response.account.username,
                                 banned: body.response.banned,
                             },
-                            rank: body.response.rank,
+                            tag: body.response.profile_tag,
+                            rank: body.response.rank_tag,
                             clan: {
                                 tag: body.response.clan?.tag,
                                 color: body.response.clan?.tag_color,

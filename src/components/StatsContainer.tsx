@@ -157,6 +157,7 @@ export default function StatsContainer({ info }: { info: ProfileInfo }) {
         <>
             <ProfilePanel
                 account={info.account}
+                tag={info.tag}
                 rank={info.rank}
                 clan={info.clan}
                 createdAt={info.createdAt}
