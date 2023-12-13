@@ -217,6 +217,100 @@ export default function getMurderFields(stats: Record<string, any>): GameStats {
                     },
                 ],
             },
+            {
+                title: "Escoteiro",
+                fields: [
+                    {
+                        name: "Jogos",
+                        value: stats?.murder?.scout_played ?? 0,
+                    },
+                    {
+                        name: "Vitórias",
+                        value: stats?.murder?.scout_wins ?? 0,
+                    },
+                    {
+                        name: "Derrotas",
+                        value: stats?.murder?.scout_losses ?? 0,
+                    },
+                    {
+                        name: "Assassinos Mortos",
+                        value: stats?.murder?.scout_killed_murderer ?? 0,
+                    },
+                    {
+                        name: "Vítimas",
+                        value: stats?.murder?.scout_kills ?? 0,
+                    },
+                    {
+                        name: "Mortes",
+                        value: stats?.murder?.scout_deaths ?? 0,
+                    },
+                    {
+                        name: "Winstreak",
+                        value: stats?.murder?.scout_winstreak ?? 0,
+                    },
+                    {
+                        name: "W/L",
+                        value: getRate(
+                            stats?.murder?.scout_wins,
+                            stats?.murder?.scout_losses
+                        ),
+                    },
+                    {
+                        name: "K/D",
+                        value: getRate(
+                            stats?.murder?.scout_kills,
+                            stats?.murder?.scout_deaths
+                        ),
+                    },
+                ],
+            },
+            {
+                title: "Médico",
+                fields: [
+                    {
+                        name: "Jogos",
+                        value: stats?.murder?.medic_played ?? 0,
+                    },
+                    {
+                        name: "Vitórias",
+                        value: stats?.murder?.medic_wins ?? 0,
+                    },
+                    {
+                        name: "Derrotas",
+                        value: stats?.murder?.medic_losses ?? 0,
+                    },
+                    {
+                        name: "Assassinos Mortos",
+                        value: stats?.murder?.medic_killed_murderer ?? 0,
+                    },
+                    {
+                        name: "Vítimas",
+                        value: stats?.murder?.medic_kills ?? 0,
+                    },
+                    {
+                        name: "Mortes",
+                        value: stats?.murder?.medic_deaths ?? 0,
+                    },
+                    {
+                        name: "Winstreak",
+                        value: stats?.murder?.medic_winstreak ?? 0,
+                    },
+                    {
+                        name: "W/L",
+                        value: getRate(
+                            stats?.murder?.medic_wins,
+                            stats?.murder?.medic_losses
+                        ),
+                    },
+                    {
+                        name: "K/D",
+                        value: getRate(
+                            stats?.murder?.medic_kills,
+                            stats?.murder?.medic_deaths
+                        ),
+                    },
+                ],
+            },
         ],
     };
 }
