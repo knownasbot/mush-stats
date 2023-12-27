@@ -17,6 +17,10 @@ export default function getCTFFields(stats: Record<string, any>): GameStats {
                 name: "Capturas",
                 value: stats?.ctf?.captures ?? 0,
             },
+            {
+                name: "Resgates",
+                value: stats?.ctf?.returns ?? 0,
+            },
         ],
     };
 }
