@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Panel from "../panels/Panel";
 import ProfilePanelSkeleton from "./ProfilePanelSkeleton";
+import { useState, useEffect } from "react";
 
 const GamePanel = styled(Panel)`
     margin-top: 5vh;
@@ -74,46 +75,60 @@ const AnimatedContainer = styled.div`
 `;
 
 export default function StatsContainerSkeleton() {
-    const components = [...Array(6)].map((_, i) => (
-        <GamePanel key={i}>
-            <AnimatedContainer>
-                <PanelHeader>
-                    <PanelTitle
-                        style={{
-                            width: 100 + Math.floor(Math.random() * 6) * 35,
-                        }}
-                    />
-                </PanelHeader>
+    const [components, setComponents] = useState<JSX.Element[]>([]);
 
-                <PanelStats>
-                    <div>
-                        {[...Array(Math.floor(3 + Math.random() * 3))].map(
-                            (_, j) => (
-                                <StatRow key={j}>
-                                    <span
-                                        style={{
-                                            width:
-                                                80 +
-                                                Math.floor(Math.random() * 8) *
-                                                    10,
-                                        }}
-                                    />
-                                    <span
-                                        style={{
-                                            width:
-                                                80 +
-                                                Math.floor(Math.random() * 8) *
-                                                    10,
-                                        }}
-                                    />
-                                </StatRow>
-                            )
-                        )}
-                    </div>
-                </PanelStats>
-            </AnimatedContainer>
-        </GamePanel>
-    ));
+    useEffect(() => {
+        if (components.length) return;
+
+        setComponents(
+            [...Array(6)].map((_, i) => (
+                <GamePanel key={i}>
+                    <AnimatedContainer>
+                        <PanelHeader>
+                            <PanelTitle
+                                style={{
+                                    width:
+                                        100 +
+                                        Math.floor(Math.random() * 6) * 35,
+                                }}
+                            />
+                        </PanelHeader>
+
+                        <PanelStats>
+                            <div>
+                                {[
+                                    ...Array(Math.floor(3 + Math.random() * 3)),
+                                ].map((_, j) => (
+                                    <StatRow key={j}>
+                                        <span
+                                            style={{
+                                                width:
+                                                    80 +
+                                                    Math.floor(
+                                                        Math.random() * 8
+                                                    ) *
+                                                        10,
+                                            }}
+                                        />
+                                        <span
+                                            style={{
+                                                width:
+                                                    80 +
+                                                    Math.floor(
+                                                        Math.random() * 8
+                                                    ) *
+                                                        10,
+                                            }}
+                                        />
+                                    </StatRow>
+                                ))}
+                            </div>
+                        </PanelStats>
+                    </AnimatedContainer>
+                </GamePanel>
+            ))
+        );
+    }, [components]);
 
     return (
         <>
