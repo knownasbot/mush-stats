@@ -21,6 +21,7 @@ declare interface ProfileInfo {
         id?: number;
         uuid: string;
         username: string;
+        playTime: number;
         banned?: boolean;
     };
     tag?: {

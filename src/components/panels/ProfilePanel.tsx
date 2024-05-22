@@ -74,6 +74,7 @@ const DateContainer = styled.div`
 const DateInfo = styled.div`
     display: inline-flex;
     align-items: center;
+    gap: 4px;
     font-size: 20px;
 `;
 
@@ -85,6 +86,8 @@ export default function ProfilePanel({
     createdAt,
     joinedAt,
 }: ProfileInfo) {
+    const playTime = Math.floor(account.playTime / 60);
+
     return (
         <Panel
             style={{
@@ -164,6 +167,19 @@ export default function ProfilePanel({
 
                         {joinedAt.toLocaleDateString()}
                     </DateInfo>
+
+                    {playTime > 0 && (
+                        <DateInfo>
+                            <Icon
+                                icon="mdi:alarm-clock"
+                                width={34}
+                                height={34}
+                            />
+                            {playTime >= 60
+                                ? `${~~(playTime / 60)} horas registradas`
+                                : `${playTime} minutos registrados`}
+                        </DateInfo>
+                    )}
                 </DateContainer>
             </ProfileInfo>
         </Panel>

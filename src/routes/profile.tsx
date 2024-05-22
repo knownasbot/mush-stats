@@ -39,6 +39,7 @@ export default function Profile() {
         account: {
             uuid: "c06f8906-4c8a-4911-9c29-ea1dbd1aab82", // MHF_Steve
             username: "...",
+            playTime: 0,
         },
         rank: {
             name: "Membro",
@@ -77,6 +78,8 @@ export default function Profile() {
                                 uuid: body.response.account.unique_id,
                                 username: body.response.account.username,
                                 banned: body.response.banned,
+                                playTime:
+                                    body.response.stats?.play_time?.all ?? 0,
                             },
                             tag: body.response.profile_tag,
                             rank: body.response.rank_tag,
