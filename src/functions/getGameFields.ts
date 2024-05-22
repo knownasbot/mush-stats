@@ -10,6 +10,7 @@ import getDuelsFields from "./game-fields/duels";
 import getTheBridgeFields from "./game-fields/thebridge";
 import getBlockPartyFields from "./game-fields/blockparty";
 import getBuildBattleFields from "./game-fields/buildbattle";
+import getHideAndSeekFields from "./game-fields/hideandseek";
 
 // O tipo é ignorado porque o retorno da API é longo e não vale a pena tipar ela inteira.
 /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
@@ -25,6 +26,7 @@ export default function getGameFields(stats: Record<string, any>): GameStats[] {
         getTheBridgeFields(stats),
         getBuildBattleFields(stats),
         getQuickBuildersFields(stats),
+        getHideAndSeekFields(stats),
         getBlockPartyFields(stats),
         getMurderFields(stats),
         getPartyFields(stats),
