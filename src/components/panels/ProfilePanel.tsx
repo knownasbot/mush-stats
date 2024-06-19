@@ -2,15 +2,31 @@ import styled from "styled-components";
 import { Icon } from "@iconify/react";
 import Panel from "./Panel";
 
+const Container = styled(Panel)`
+    display: flex;
+    padding: 25px 20px;
+
+    @media (max-width: 600px) {
+        display: block;
+    }
+`;
+
 const Avatar = styled.img`
+    display: block;
+    margin: 0 auto;
     width: 100px;
     height: 100px;
     background: lightgray;
     border-radius: 50%;
     user-select: none;
+
+    @media (max-width: 600px) {
+        margin-bottom: 10px;
+    }
 `;
 
 const ProfileInfo = styled.div`
+    width: 100%;
     margin-left: 10px;
     opacity: 0.9;
 `;
@@ -19,13 +35,19 @@ const NameContainer = styled.div`
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 3px;
+    gap: 4px;
 `;
 
-const PlayerUsername = styled.h2`
+const PlayerUsername = styled.div`
+    display: inline-flex;
     margin: 0;
     font-size: 40px;
     font-weight: 500;
+
+    @media (max-width: 600px) {
+        width: 100%;
+        justify-content: center;
+    }
 `;
 
 const PlayerTag = styled.b`
@@ -66,7 +88,7 @@ const DateContainer = styled.div`
     flex-wrap: wrap;
     gap: 0 20px;
 
-    @media (max-width: 460px) {
+    @media (max-width: 600px) {
         margin-top: 20px;
     }
 `;
@@ -89,12 +111,7 @@ export default function ProfilePanel({
     const playTime = Math.floor(account.playTime / 60);
 
     return (
-        <Panel
-            style={{
-                display: "flex",
-                padding: "25px 20px",
-            }}
-        >
+        <Container>
             <Avatar
                 src={`https://crafatar.com/avatars/${account.uuid}?size=100`}
                 alt="Avatar do Jogador"
@@ -103,20 +120,26 @@ export default function ProfilePanel({
 
             <ProfileInfo>
                 <NameContainer>
-                    <div
-                        style={{
-                            display: "inline-flex",
-                        }}
-                    >
-                        <Icon icon="mdi:account" width={48} height={48} />
-                        <PlayerUsername>{account.username}</PlayerUsername>
-                    </div>
+                    <PlayerUsername>
+                        <Icon
+                            icon="mdi:account"
+                            width={48}
+                            height={48}
+                            style={{
+                                flexShrink: 0,
+                            }}
+                        />
+                        <span
+                            style={{
+                                overflow: "hidden",
+                                textOverflow: "ellipsis",
+                            }}
+                        >
+                            {account.username}
+                        </span>
+                    </PlayerUsername>
 
-                    <div
-                        style={{
-                            display: "inline-flex",
-                        }}
-                    >
+                    <PlayerUsername>
                         {tag && tag.name != rank.name && (
                             <RankTag rankcolor={tag.color}>{tag.name}</RankTag>
                         )}
@@ -144,7 +167,7 @@ export default function ProfilePanel({
                                 Banido
                             </BanTag>
                         )}
-                    </div>
+                    </PlayerUsername>
                 </NameContainer>
 
                 <DateContainer>
@@ -182,6 +205,6 @@ export default function ProfilePanel({
                     )}
                 </DateContainer>
             </ProfileInfo>
-        </Panel>
+        </Container>
     );
 }

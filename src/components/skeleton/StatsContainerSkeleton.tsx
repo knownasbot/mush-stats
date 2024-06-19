@@ -5,7 +5,8 @@ import { useState, useEffect } from "react";
 
 const GamePanel = styled(Panel)`
     margin-top: 5vh;
-    width: 400px;
+    width: 100%;
+    max-width: 400px;
 
     @media (max-width: 800px) {
         max-width: 100%;

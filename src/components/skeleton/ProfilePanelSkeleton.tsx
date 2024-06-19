@@ -1,7 +1,18 @@
 import styled from "styled-components";
 import Panel from "../panels/Panel";
 
+const Container = styled(Panel)`
+    display: flex;
+    padding: 25px 20px;
+
+    @media (max-width: 600px) {
+        display: block;
+    }
+`;
+
 const Avatar = styled.div`
+    margin: 0 auto;
+    margin-bottom: 10px;
     width: 100px;
     height: 100px;
     background: black;
@@ -13,6 +24,11 @@ const NameContainer = styled.div`
     flex-wrap: wrap;
     align-items: center;
     gap: 10px;
+
+    @media (max-width: 600px) {
+        width: 100%;
+        justify-content: center;
+    }
 `;
 
 const Tag = styled.b`
@@ -50,6 +66,7 @@ const DateInfo = styled.div`
 const AnimatedContainer = styled.div`
     display: inherit;
     opacity: 0.2;
+    gap: 20px;
     animation-name: pulse;
     animation-duration: 2s;
     animation-iteration-count: infinite;
@@ -57,12 +74,7 @@ const AnimatedContainer = styled.div`
 
 export default function ProfilePanelSkeleton() {
     return (
-        <Panel
-            style={{
-                display: "flex",
-                padding: "25px 20px",
-            }}
-        >
+        <Container>
             <AnimatedContainer>
                 <Avatar
                     style={{
@@ -73,7 +85,6 @@ export default function ProfilePanelSkeleton() {
                 <div
                     style={{
                         width: "100%",
-                        marginLeft: "10px",
                     }}
                 >
                     <NameContainer>
@@ -97,6 +108,6 @@ export default function ProfilePanelSkeleton() {
                     </DateContainer>
                 </div>
             </AnimatedContainer>
-        </Panel>
+        </Container>
     );
 }
