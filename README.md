@@ -29,20 +29,3 @@ Importante notar que o projeto utiliza de algumas ferramentas para manter um có
 Caso não utilize o editor **Visual Studio Code** e queira analisar os arquivos, use os comandos `npm run lint` e `npm run pretty`.
 
 O projeto também faz uso do [Husky](https://typicode.github.io/husky/), então não precisa se preocupar em rodar comandos de análise sintática antes de realizar um commit.
-
-## Demo
-
-Para os curiosos, segue abaixo demonstrações da página.
-
-<details>
-<summary>Screenshots da página</summary>
-
-### Desktop
-
-![Demo da Página](./demo-desktop.png)
-
-### Mobile
-
-![Demo da Página](./demo-mobile.png)
-
-</details>
