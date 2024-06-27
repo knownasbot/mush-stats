@@ -1,11 +1,13 @@
-import { useContext } from "react";
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
+import { Icon } from "@iconify/react";
+import ProfilePanel from "./panels/ProfilePanel";
 import styled from "styled-components";
 import Panel from "./panels/Panel";
-import ProfilePanel from "./panels/ProfilePanel";
-import { ModalContext } from "../routes/profile";
+import Button from "./Button";
 
 const GamePanel = styled(Panel)`
-    margin-top: 5vh;
+    margin-top: 2em;
     width: 100%;
     max-width: 400px;
     height: fit-content;
@@ -30,18 +32,11 @@ const GameGrid = styled.div`
 `;
 
 const PanelHeader = styled.div`
-    position: relative;
-    display: flex;
+    display: inline-flex;
+    width: 100%;
     align-items: center;
     justify-content: center;
-    text-align: center;
-`;
-
-const PanelIcon = styled.img`
-    position: absolute;
-    width: 52px;
-    height: 52px;
-    left: -14px;
+    gap: 20px;
 `;
 
 const PanelTitle = styled.h2`
@@ -74,45 +69,105 @@ const StatRow = styled.p`
     }
 `;
 
-const DetailsButton = styled.div`
-    display: flex;
+const DetailsButton = styled(Button)`
     width: 100%;
-    height: 100%
-    justify-content: center;
+    padding: 5px;
+    margin-top: 1em;
+    border: 1px solid black;
+    color: black;
+    background: white;
 
-    button {
-        display: inline-flex;
-        margin: 15px auto;
-        align-items: center;
-        gap: 10px;
-        opacity: 0.85;
-        border: none;
-        background: none;
-        font-size: 24px;
-        font-weight: bold;
-        cursor: pointer;
+    &:active {
+        color: white;
+        border-color: var(--main-s1);
+    }
+`;
+
+const DetailsTitle = styled.div`
+    display: inline-flex;
+    margin-top: 2em;
+    gap: 20px;
+    align-items: center;
+
+    h2 {
+        opacity: 0.9;
     }
 `;
 
 export default function StatsContainer({ info }: { info: ProfileInfo }) {
     let components: React.ReactNode[] = [];
-    const { setModalDetails } = useContext(ModalContext);
+    const location = useLocation();
+    const [gameDetails, setGameDetails] = useState<GameStats | null>();
+    const [hasHistoryHandler, setHistoryHandler] = useState(false);
+
+    useEffect(() => {
+        if (!hasHistoryHandler) {
+            setHistoryHandler(true);
+            window.addEventListener("popstate", () => setGameDetails(null));
+        }
+
+        if (!gameDetails) {
+            const gameId = location.hash.slice(1);
+            const details = info.stats?.find((v) => v.id == gameId);
+            if (details) {
+                setGameDetails(details);
+                window.history.pushState("d", "");
+            }
+        }
+    }, [location, hasHistoryHandler, gameDetails, info.stats]);
 
     function handleDetailsButton(id: string) {
-        setModalDetails({
-            hidden: false,
-            stats: info.stats?.find((v) => v.id === id)?.details,
-        });
+        setGameDetails(info.stats?.find((v) => v.id === id));
+        window.scrollTo({ top: 0 });
+        window.history.pushState("d", "");
     }
 
-    if (info.stats) {
+    if (gameDetails?.details) {
+        components = gameDetails.details.map((field, i) => (
+            <GamePanel key={i}>
+                <PanelHeader>
+                    <img
+                        src={`icons/${gameDetails.icon}`}
+                        alt={`Ícone ${gameDetails.title}`}
+                        draggable={false}
+                        width={50}
+                    />
+                    <PanelTitle>
+                        {field.title ? field.title : "Geral"}
+                    </PanelTitle>
+                </PanelHeader>
+
+                <PanelStats>
+                    <div>
+                        {field.fields.map((stat, i) => (
+                            <StatRow key={i}>
+                                <span>{stat.name}</span>
+                                {typeof stat.value == "object" ? (
+                                    <span
+                                        style={{
+                                            color: stat.value.color,
+                                        }}
+                                    >
+                                        {stat.value.value}
+                                    </span>
+                                ) : (
+                                    <span>{stat.value}</span>
+                                )}
+                            </StatRow>
+                        ))}
+                    </div>
+                </PanelStats>
+            </GamePanel>
+        ));
+    } else if (info.stats) {
         components = info.stats.map((game, i) => (
             <GamePanel key={i}>
                 <PanelHeader>
-                    <PanelIcon
+                    <img
                         src={`icons/${game.icon}`}
                         alt={`Ícone ${game.title}`}
                         draggable={false}
+                        width={50}
                     />
                     <PanelTitle>{game.title}</PanelTitle>
                 </PanelHeader>
@@ -128,24 +183,11 @@ export default function StatsContainer({ info }: { info: ProfileInfo }) {
                     </div>
 
                     {game.details && (
-                        <DetailsButton>
-                            <button
-                                onClick={() => handleDetailsButton(game.id)}
-                            >
-                                <svg
-                                    width="22"
-                                    height="18"
-                                    viewBox="0 0 22 18"
-                                    fill="none"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                >
-                                    <path
-                                        d="M11 18L21.3923 0H0.607696L11 18Z"
-                                        fill="black"
-                                    />
-                                </svg>
-                                Detalhes
-                            </button>
+                        <DetailsButton
+                            onClick={() => handleDetailsButton(game.id)}
+                        >
+                            <Icon icon={"mingcute:down-fill"} />
+                            Detalhes
                         </DetailsButton>
                     )}
                 </PanelStats>
@@ -164,14 +206,25 @@ export default function StatsContainer({ info }: { info: ProfileInfo }) {
                 joinedAt={info.joinedAt}
             />
 
-            <GameGrid>
-                <GamePanelColumn>
-                    {components.slice(0, Math.ceil(components.length / 2))}
-                </GamePanelColumn>
-                <GamePanelColumn>
-                    {components.slice(Math.ceil(components.length / 2))}
-                </GamePanelColumn>
-            </GameGrid>
+            <div>
+                {gameDetails && (
+                    <DetailsTitle>
+                        <Button onClick={() => setGameDetails(null)}>
+                            <Icon icon={"streamline:return-2-solid"} />
+                        </Button>
+
+                        <h2>Detalhes de {gameDetails.title}</h2>
+                    </DetailsTitle>
+                )}
+                <GameGrid>
+                    <GamePanelColumn>
+                        {components.slice(0, Math.ceil(components.length / 2))}
+                    </GamePanelColumn>
+                    <GamePanelColumn>
+                        {components.slice(Math.ceil(components.length / 2))}
+                    </GamePanelColumn>
+                </GameGrid>
+            </div>
         </>
     );
 }

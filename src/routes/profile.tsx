@@ -1,8 +1,7 @@
-import { useState, useEffect, createContext } from "react";
+import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import StatsContainer from "../components/StatsContainer";
 import StatsContainerSkeleton from "../components/skeleton/StatsContainerSkeleton";
-import DetailsModal from "../components/panels/DetailsModal";
 import ErrorPanel from "../components/panels/ErrorPanel";
 import getGameFields from "../functions/getGameFields";
 
@@ -12,15 +11,6 @@ type RequestStatus = {
     status: number | null;
 };
 
-interface ModalContextInterface {
-    modalDetails: ModalDetails;
-    setModalDetails: (details: ModalDetails) => void;
-}
-
-export const ModalContext = createContext<ModalContextInterface>(
-    {} as ModalContextInterface
-);
-
 export default function Profile() {
     const location = useLocation();
 
@@ -28,11 +18,6 @@ export default function Profile() {
         error: false,
         finished: false,
         status: null,
-    });
-
-    const [modalDetails, setModalDetails] = useState<ModalDetails>({
-        hidden: true,
-        stats: [],
     });
 
     const [userStats, setUserStats] = useState<ProfileInfo>({
@@ -101,16 +86,6 @@ export default function Profile() {
                             finished: true,
                             status: null,
                         });
-
-                        if (location.hash) {
-                            const gameDetails = gameFields?.find(
-                                (v) => v.id === location.hash.replace(/#+/, "")
-                            )?.details;
-                            setModalDetails({
-                                hidden: !gameDetails,
-                                stats: gameDetails,
-                            });
-                        }
                     } else {
                         setRequestStatus({
                             error: true,
@@ -146,12 +121,7 @@ export default function Profile() {
             }}
         >
             {requestStatus.finished && !requestStatus.error ? (
-                <ModalContext.Provider
-                    value={{ modalDetails, setModalDetails }}
-                >
-                    <DetailsModal stats={modalDetails.stats as GameDetails[]} />
-                    <StatsContainer info={userStats} />
-                </ModalContext.Provider>
+                <StatsContainer info={userStats} />
             ) : requestStatus.error ? (
                 <ErrorPanel status={requestStatus.status as number} />
             ) : (
