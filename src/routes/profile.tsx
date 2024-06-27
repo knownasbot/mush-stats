@@ -90,7 +90,7 @@ export default function Profile() {
                         setRequestStatus({
                             error: true,
                             finished: true,
-                            status: body.errorCode,
+                            status: body.error_code,
                         });
                     }
                 } else {
