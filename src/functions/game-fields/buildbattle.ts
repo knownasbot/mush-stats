@@ -31,6 +31,10 @@ export default function getBuildBattleFields(
                 title: "",
                 fields: [
                     {
+                        name: "Nível",
+                        value: stats?.buildbattle?.level ?? 0,
+                    },
+                    {
                         name: "Jogos",
                         value: stats?.buildbattle?.played ?? 0,
                     },
