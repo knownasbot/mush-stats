@@ -1,3 +1,4 @@
+import formatHours from "../formatHours";
 import getRate from "../getRate";
 
 export default function getHungerGamesFields(
@@ -45,6 +46,10 @@ export default function getHungerGamesFields(
                     {
                         name: "Mortes",
                         value: stats?.hungergames?.deaths ?? 0,
+                    },
+                    {
+                        name: "Tempo de Jogo",
+                        value: formatHours(stats?.play_time?.hungergames),
                     },
                     {
                         name: "Assistências",
@@ -96,6 +101,12 @@ export default function getHungerGamesFields(
                         value: stats?.hungergames?.mode_doublekit_deaths ?? 0,
                     },
                     {
+                        name: "Tempo de Jogo",
+                        value: formatHours(
+                            stats?.play_time?.hungergames_doublekit
+                        ),
+                    },
+                    {
                         name: "Vítimas Recorde",
                         value:
                             stats?.hungergames?.mode_doublekit_max_kills ?? 0,
@@ -135,6 +146,12 @@ export default function getHungerGamesFields(
                     {
                         name: "Mortes",
                         value: stats?.hungergames?.mode_minimush_deaths ?? 0,
+                    },
+                    {
+                        name: "Tempo de Jogo",
+                        value: formatHours(
+                            stats?.play_time?.hungergames_minimush
+                        ),
                     },
                     {
                         name: "Vítimas Recorde",

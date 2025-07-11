@@ -1,3 +1,4 @@
+import formatHours from "../formatHours";
 import getRate from "../getRate";
 
 export default function getTheBridgeFields(
@@ -55,6 +56,10 @@ export default function getTheBridgeFields(
                         value: stats?.duels?.bridge_deaths ?? 0,
                     },
                     {
+                        name: "Tempo de Jogo",
+                        value: formatHours(stats?.play_time?.duels_bridge),
+                    },
+                    {
                         name: "W/L",
                         value: getRate(
                             stats?.duels?.bridge_wins,
@@ -92,6 +97,12 @@ export default function getTheBridgeFields(
                     {
                         name: "Mortes",
                         value: stats?.duels?.bridge_solo_deaths ?? 0,
+                    },
+                    {
+                        name: "Tempo de Jogo",
+                        value:
+                            formatHours(stats?.play_time?.duels_bridge_solo) ??
+                            0,
                     },
                     {
                         name: "W/L",
@@ -133,6 +144,12 @@ export default function getTheBridgeFields(
                         value: stats?.duels?.bridge_doubles_deaths ?? 0,
                     },
                     {
+                        name: "Tempo de Jogo",
+                        value: formatHours(
+                            stats?.play_time?.duels_bridge_doubles
+                        ),
+                    },
+                    {
                         name: "W/L",
                         value: getRate(
                             stats?.duels?.bridge_doubles_wins,
@@ -170,6 +187,10 @@ export default function getTheBridgeFields(
                     {
                         name: "Mortes",
                         value: stats?.duels?.bridge_four_deaths ?? 0,
+                    },
+                    {
+                        name: "Tempo de Jogo",
+                        value: formatHours(stats?.play_time?.duels_bridge_four),
                     },
                     {
                         name: "W/L",

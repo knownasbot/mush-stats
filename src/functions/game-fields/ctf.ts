@@ -1,3 +1,5 @@
+import formatHours from "../formatHours";
+
 /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
 export default function getCTFFields(stats: Record<string, any>): GameStats {
     return {
@@ -20,6 +22,10 @@ export default function getCTFFields(stats: Record<string, any>): GameStats {
             {
                 name: "Resgates",
                 value: stats?.ctf?.returns ?? 0,
+            },
+            {
+                name: "Tempo de Jogo",
+                value: formatHours(stats?.play_time?.ctf),
             },
         ],
     };

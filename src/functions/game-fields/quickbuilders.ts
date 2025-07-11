@@ -1,3 +1,4 @@
+import formatHours from "../formatHours";
 import getRate from "../getRate";
 
 export default function getQuickBuildersFields(
@@ -41,6 +42,10 @@ export default function getQuickBuildersFields(
                     {
                         name: "Derrotas",
                         value: stats?.quickbuilders?.losses ?? 0,
+                    },
+                    {
+                        name: "Tempo de Jogo",
+                        value: formatHours(stats?.play_time?.quickbuilders),
                     },
                     {
                         name: "Construções Perfeitas",

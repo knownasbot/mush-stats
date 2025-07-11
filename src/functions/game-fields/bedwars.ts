@@ -1,3 +1,4 @@
+import formatHours from "../formatHours";
 import getRate from "../getRate";
 
 export default function getBedWarsFields(
@@ -55,12 +56,24 @@ export default function getBedWarsFields(
                         value: stats?.bedwars?.deaths ?? 0,
                     },
                     {
+                        name: "Tempo de Jogo",
+                        value: formatHours(stats?.play_time?.bedwars),
+                    },
+                    {
                         name: "Vítimas finais",
                         value: stats?.bedwars?.final_kills ?? 0,
                     },
                     {
                         name: "Mortes finais",
                         value: stats?.bedwars?.final_deaths ?? 0,
+                    },
+                    {
+                        name: "Camas Quebradas",
+                        value: stats?.bedwars?.beds_broken ?? 0,
+                    },
+                    {
+                        name: "Camas Perdidas",
+                        value: stats?.bedwars?.beds_lost ?? 0,
                     },
                     {
                         name: "Winstreak",
@@ -106,12 +119,24 @@ export default function getBedWarsFields(
                         value: stats?.bedwars?.solo_deaths ?? 0,
                     },
                     {
+                        name: "Tempo de Jogo",
+                        value: formatHours(stats?.play_time?.bedwars_solo),
+                    },
+                    {
                         name: "Vítimas finais",
                         value: stats?.bedwars?.solo_final_kills ?? 0,
                     },
                     {
                         name: "Mortes finais",
                         value: stats?.bedwars?.solo_final_deaths ?? 0,
+                    },
+                    {
+                        name: "Camas Quebradas",
+                        value: stats?.bedwars?.solo_beds_broken ?? 0,
+                    },
+                    {
+                        name: "Camas Perdidas",
+                        value: stats?.bedwars?.solo_beds_lost ?? 0,
                     },
                     {
                         name: "Winstreak",
@@ -157,12 +182,24 @@ export default function getBedWarsFields(
                         value: stats?.bedwars?.doubles_deaths ?? 0,
                     },
                     {
+                        name: "Tempo de Jogo",
+                        value: formatHours(stats?.play_time?.bedwars_doubles),
+                    },
+                    {
                         name: "Vítimas finais",
                         value: stats?.bedwars?.doubles_final_kills ?? 0,
                     },
                     {
                         name: "Mortes finais",
                         value: stats?.bedwars?.doubles_final_deaths ?? 0,
+                    },
+                    {
+                        name: "Camas Quebradas",
+                        value: stats?.bedwars?.doubles_beds_broken ?? 0,
+                    },
+                    {
+                        name: "Camas Perdidas",
+                        value: stats?.bedwars?.doubles_beds_lost ?? 0,
                     },
                     {
                         name: "Winstreak",
@@ -208,12 +245,24 @@ export default function getBedWarsFields(
                         value: stats?.bedwars?.["3v3v3v3_deaths"] ?? 0,
                     },
                     {
+                        name: "Tempo de Jogo",
+                        value: formatHours(stats?.play_time?.bedwars_3v3v3v3),
+                    },
+                    {
                         name: "Vítimas finais",
                         value: stats?.bedwars?.["3v3v3v3_final_kills"] ?? 0,
                     },
                     {
                         name: "Mortes finais",
                         value: stats?.bedwars?.["3v3v3v3_final_deaths"] ?? 0,
+                    },
+                    {
+                        name: "Camas Quebradas",
+                        value: stats?.bedwars?.["3v3v3v3_beds_broken"] ?? 0,
+                    },
+                    {
+                        name: "Camas Perdidas",
+                        value: stats?.bedwars?.["3v3v3v3_beds_lost"] ?? 0,
                     },
                     {
                         name: "Winstreak",
@@ -259,12 +308,24 @@ export default function getBedWarsFields(
                         value: stats?.bedwars?.["4v4v4v4_deaths"] ?? 0,
                     },
                     {
+                        name: "Tempo de Jogo",
+                        value: formatHours(stats?.play_time?.bedwars_4v4v4v4),
+                    },
+                    {
                         name: "Vítimas finais",
                         value: stats?.bedwars?.["4v4v4v4_final_kills"] ?? 0,
                     },
                     {
                         name: "Mortes finais",
                         value: stats?.bedwars?.["4v4v4v4_final_deaths"] ?? 0,
+                    },
+                    {
+                        name: "Camas Quebradas",
+                        value: stats?.bedwars?.["4v4v4v4_beds_broken"] ?? 0,
+                    },
+                    {
+                        name: "Camas Perdidas",
+                        value: stats?.bedwars?.["4v4v4v4_beds_lost"] ?? 0,
                     },
                     {
                         name: "Winstreak",
@@ -310,12 +371,24 @@ export default function getBedWarsFields(
                         value: stats?.bedwars?.["2v2_deaths"] ?? 0,
                     },
                     {
+                        name: "Tempo de Jogo",
+                        value: formatHours(stats?.play_time?.bedwars_2v2),
+                    },
+                    {
                         name: "Vítimas finais",
                         value: stats?.bedwars?.["2v2_final_kills"] ?? 0,
                     },
                     {
                         name: "Mortes finais",
                         value: stats?.bedwars?.["2v2_final_deaths"] ?? 0,
+                    },
+                    {
+                        name: "Camas Quebradas",
+                        value: stats?.bedwars?.["2v2_beds_broken"] ?? 0,
+                    },
+                    {
+                        name: "Camas Perdidas",
+                        value: stats?.bedwars?.["2v2_beds_lost"] ?? 0,
                     },
                     {
                         name: "Winstreak",
@@ -361,12 +434,24 @@ export default function getBedWarsFields(
                         value: stats?.bedwars?.["3v3_deaths"] ?? 0,
                     },
                     {
+                        name: "Tempo de Jogo",
+                        value: formatHours(stats?.play_time?.bedwars_3v3),
+                    },
+                    {
                         name: "Vítimas finais",
                         value: stats?.bedwars?.["3v3_final_kills"] ?? 0,
                     },
                     {
                         name: "Mortes finais",
                         value: stats?.bedwars?.["3v3_final_deaths"] ?? 0,
+                    },
+                    {
+                        name: "Camas Quebradas",
+                        value: stats?.bedwars?.["3v3_beds_broken"] ?? 0,
+                    },
+                    {
+                        name: "Camas Perdidas",
+                        value: stats?.bedwars?.["3v3_beds_lost"] ?? 0,
                     },
                     {
                         name: "Winstreak",
@@ -412,12 +497,24 @@ export default function getBedWarsFields(
                         value: stats?.bedwars?.["4v4_deaths"] ?? 0,
                     },
                     {
+                        name: "Tempo de Jogo",
+                        value: formatHours(stats?.play_time?.bedwars_4v4),
+                    },
+                    {
                         name: "Vítimas finais",
                         value: stats?.bedwars?.["4v4_final_kills"] ?? 0,
                     },
                     {
                         name: "Mortes finais",
                         value: stats?.bedwars?.["4v4_final_deaths"] ?? 0,
+                    },
+                    {
+                        name: "Camas Quebradas",
+                        value: stats?.bedwars?.["4v4_beds_broken"] ?? 0,
+                    },
+                    {
+                        name: "Camas Perdidas",
+                        value: stats?.bedwars?.["4v4_beds_lost"] ?? 0,
                     },
                     {
                         name: "Winstreak",

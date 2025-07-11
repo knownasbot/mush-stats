@@ -1,3 +1,4 @@
+import formatHours from "../formatHours";
 import getRate from "../getRate";
 
 /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
@@ -64,6 +65,10 @@ export default function getDuelsFields(stats: Record<string, any>): GameStats {
                         name: "Mortes",
                         value: totalDeaths,
                     },
+                    {
+                        name: "Tempo de Jogo",
+                        value: formatHours(stats?.play_time?.duels),
+                    },
                 ],
             },
             {
@@ -88,6 +93,10 @@ export default function getDuelsFields(stats: Record<string, any>): GameStats {
                     {
                         name: "Mortes",
                         value: stats?.duels?.boxing_deaths ?? 0,
+                    },
+                    {
+                        name: "Tempo de Jogo",
+                        value: formatHours(stats?.play_time?.duels_boxing),
                     },
                     {
                         name: "Winstreak",
@@ -133,6 +142,10 @@ export default function getDuelsFields(stats: Record<string, any>): GameStats {
                         value: stats?.duels?.no_debuff_deaths ?? 0,
                     },
                     {
+                        name: "Tempo de Jogo",
+                        value: formatHours(stats?.play_time?.duels_no_debuff),
+                    },
+                    {
                         name: "Winstreak",
                         value: stats?.duels?.no_debuff_winstreak ?? 0,
                     },
@@ -174,6 +187,10 @@ export default function getDuelsFields(stats: Record<string, any>): GameStats {
                     {
                         name: "Mortes",
                         value: stats?.duels?.soup_solo_deaths ?? 0,
+                    },
+                    {
+                        name: "Tempo de Jogo",
+                        value: formatHours(stats?.play_time?.duels_soup),
                     },
                     {
                         name: "Winstreak",
@@ -219,6 +236,12 @@ export default function getDuelsFields(stats: Record<string, any>): GameStats {
                         value: stats?.duels?.soup_doubles_deaths ?? 0,
                     },
                     {
+                        name: "Tempo de Jogo",
+                        value:
+                            formatHours(stats?.play_time?.duels_soup_doubles) ??
+                            0,
+                    },
+                    {
                         name: "Winstreak",
                         value: stats?.duels?.soup_doubles_winstreak ?? 0,
                     },
@@ -262,6 +285,10 @@ export default function getDuelsFields(stats: Record<string, any>): GameStats {
                         value: stats?.duels?.uhc_solo_deaths ?? 0,
                     },
                     {
+                        name: "Tempo de Jogo",
+                        value: formatHours(stats?.play_time?.duels_uhc),
+                    },
+                    {
                         name: "W/L",
                         value: getRate(
                             stats?.duels?.uhc_solo_wins,
@@ -299,6 +326,12 @@ export default function getDuelsFields(stats: Record<string, any>): GameStats {
                     {
                         name: "Mortes",
                         value: stats?.duels?.uhc_doubles_deaths ?? 0,
+                    },
+                    {
+                        name: "Tempo de Jogo",
+                        value:
+                            formatHours(stats?.play_time?.duels_uhc_doubles) ??
+                            0,
                     },
                     {
                         name: "W/L",

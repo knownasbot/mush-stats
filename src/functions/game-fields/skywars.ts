@@ -1,3 +1,4 @@
+import formatHours from "../formatHours";
 import getRate from "../getRate";
 
 export default function getSkyWarsFields(
@@ -74,6 +75,10 @@ export default function getSkyWarsFields(
                         value: stats?.skywars_r1?.deaths ?? 0,
                     },
                     {
+                        name: "Tempo de Jogo",
+                        value: formatHours(stats?.play_time?.skywars),
+                    },
+                    {
                         name: "W/L",
                         value: getRate(
                             stats?.skywars_r1?.["wins"],
@@ -111,6 +116,10 @@ export default function getSkyWarsFields(
                     {
                         name: "Mortes",
                         value: stats?.skywars_r1?.deaths_solo ?? 0,
+                    },
+                    {
+                        name: "Tempo de Jogo",
+                        value: formatHours(stats?.play_time?.skywars_solo),
                     },
                     {
                         name: "Winstreak",
@@ -154,6 +163,10 @@ export default function getSkyWarsFields(
                     {
                         name: "Mortes",
                         value: stats?.skywars_r1?.deaths_team ?? 0,
+                    },
+                    {
+                        name: "Tempo de Jogo",
+                        value: formatHours(stats?.play_time?.skywars_team),
                     },
                     {
                         name: "Winstreak",

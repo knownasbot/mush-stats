@@ -1,3 +1,5 @@
+import formatHours from "../formatHours";
+
 /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
 export default function getPartyFields(stats: Record<string, any>): GameStats {
     return {
@@ -31,6 +33,10 @@ export default function getPartyFields(stats: Record<string, any>): GameStats {
                         value: stats?.party?.played ?? 0,
                     },
                     {
+                        name: "Tempo de Jogo",
+                        value: formatHours(stats?.play_time?.party),
+                    },
+                    {
                         name: "Pontos",
                         value: stats?.party?.points ?? 0,
                     },
@@ -54,6 +60,12 @@ export default function getPartyFields(stats: Record<string, any>): GameStats {
                     {
                         name: "Jogos",
                         value: stats?.party?.block_party_played ?? 0,
+                    },
+                    {
+                        name: "Tempo de Jogo",
+                        value:
+                            formatHours(stats?.play_time?.party_block_party) ??
+                            0,
                     },
                     {
                         name: "Pontos",
@@ -81,6 +93,10 @@ export default function getPartyFields(stats: Record<string, any>): GameStats {
                         value: stats?.party?.hunter_played ?? 0,
                     },
                     {
+                        name: "Tempo de Jogo",
+                        value: formatHours(stats?.play_time?.party_hunter),
+                    },
+                    {
                         name: "Pontos",
                         value: stats?.party?.hunter_points ?? 0,
                     },
@@ -104,6 +120,10 @@ export default function getPartyFields(stats: Record<string, any>): GameStats {
                     {
                         name: "Jogos",
                         value: stats?.party?.race_played ?? 0,
+                    },
+                    {
+                        name: "Tempo de Jogo",
+                        value: formatHours(stats?.play_time?.party_race),
                     },
                     {
                         name: "Pontos",
@@ -131,6 +151,12 @@ export default function getPartyFields(stats: Record<string, any>): GameStats {
                         value: stats?.party?.grappler_race_played ?? 0,
                     },
                     {
+                        name: "Tempo de Jogo",
+                        value: formatHours(
+                            stats?.play_time?.party_grappler_race
+                        ),
+                    },
+                    {
                         name: "Pontos",
                         value: stats?.party?.grappler_race_points ?? 0,
                     },
@@ -154,6 +180,12 @@ export default function getPartyFields(stats: Record<string, any>): GameStats {
                     {
                         name: "Jogos",
                         value: stats?.party?.kangaroo_race_played ?? 0,
+                    },
+                    {
+                        name: "Tempo de Jogo",
+                        value: formatHours(
+                            stats?.play_time?.party_kangaroo_race
+                        ),
                     },
                     {
                         name: "Pontos",
@@ -181,6 +213,10 @@ export default function getPartyFields(stats: Record<string, any>): GameStats {
                         value: stats?.party?.fisherman_played ?? 0,
                     },
                     {
+                        name: "Tempo de Jogo",
+                        value: formatHours(stats?.play_time?.party_fisherman),
+                    },
+                    {
                         name: "Pontos",
                         value: stats?.party?.fisherman_points ?? 0,
                     },
@@ -204,6 +240,10 @@ export default function getPartyFields(stats: Record<string, any>): GameStats {
                     {
                         name: "Jogos",
                         value: stats?.party?.lava_played ?? 0,
+                    },
+                    {
+                        name: "Tempo de Jogo",
+                        value: formatHours(stats?.play_time?.party_lava),
                     },
                     {
                         name: "Pontos",
@@ -231,6 +271,10 @@ export default function getPartyFields(stats: Record<string, any>): GameStats {
                         value: stats?.party?.mlg_sumo_played ?? 0,
                     },
                     {
+                        name: "Tempo de Jogo",
+                        value: formatHours(stats?.play_time?.party_mlg_sumo),
+                    },
+                    {
                         name: "Pontos",
                         value: stats?.party?.mlg_sumo_points ?? 0,
                     },
@@ -254,6 +298,10 @@ export default function getPartyFields(stats: Record<string, any>): GameStats {
                     {
                         name: "Jogos",
                         value: stats?.party?.oitc_played ?? 0,
+                    },
+                    {
+                        name: "Tempo de Jogo",
+                        value: formatHours(stats?.play_time?.party_oitc),
                     },
                     {
                         name: "Pontos",
@@ -281,6 +329,10 @@ export default function getPartyFields(stats: Record<string, any>): GameStats {
                         value: stats?.party?.stomper_played ?? 0,
                     },
                     {
+                        name: "Tempo de Jogo",
+                        value: formatHours(stats?.play_time?.party_stomper),
+                    },
+                    {
                         name: "Pontos",
                         value: stats?.party?.stomper_points ?? 0,
                     },
@@ -304,6 +356,10 @@ export default function getPartyFields(stats: Record<string, any>): GameStats {
                     {
                         name: "Jogos",
                         value: stats?.party?.tnt_run_played ?? 0,
+                    },
+                    {
+                        name: "Tempo de Jogo",
+                        value: formatHours(stats?.play_time?.party_tnt_run),
                     },
                     {
                         name: "Pontos",

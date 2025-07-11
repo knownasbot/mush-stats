@@ -1,3 +1,4 @@
+import formatHours from "../formatHours";
 import getRate from "../getRate";
 
 export default function getHideAndSeekFields(
@@ -53,6 +54,10 @@ export default function getHideAndSeekFields(
                     {
                         name: "Mortes",
                         value: stats?.seek?.deaths ?? 0,
+                    },
+                    {
+                        name: "Tempo de Jogo",
+                        value: formatHours(stats?.play_time?.seek),
                     },
                     {
                         name: "Winstreak",

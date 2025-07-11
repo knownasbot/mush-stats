@@ -1,3 +1,5 @@
+import formatHours from "../formatHours";
+
 export default function getBlockPartyFields(
     /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
     stats: Record<string, any>
@@ -18,6 +20,10 @@ export default function getBlockPartyFields(
             {
                 name: "Vitórias",
                 value: stats?.blockparty?.wins ?? 0,
+            },
+            {
+                name: "Tempo de Jogo",
+                value: formatHours(stats?.play_time?.blockparty),
             },
         ],
     };

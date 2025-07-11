@@ -1,3 +1,4 @@
+import formatHours from "../formatHours";
 import getRate from "../getRate";
 
 export default function getBuildBattleFields(
@@ -45,6 +46,10 @@ export default function getBuildBattleFields(
                     {
                         name: "Derrotas",
                         value: stats?.buildbattle?.losses ?? 0,
+                    },
+                    {
+                        name: "Tempo de Jogo",
+                        value: formatHours(stats?.play_time?.buildbattle),
                     },
                     {
                         name: "Construções Perfeitas",
@@ -99,6 +104,12 @@ export default function getBuildBattleFields(
                         value: stats?.buildbattle?.solo_losses ?? 0,
                     },
                     {
+                        name: "Tempo de Jogo",
+                        value:
+                            formatHours(stats?.play_time?.buildbattle_solo) ??
+                            0,
+                    },
+                    {
                         name: "Construções Perfeitas",
                         value: stats?.buildbattle?.solo_perfects ?? 0,
                     },
@@ -149,6 +160,12 @@ export default function getBuildBattleFields(
                     {
                         name: "Derrotas",
                         value: stats?.buildbattle?.doubles_losses ?? 0,
+                    },
+                    {
+                        name: "Tempo de Jogo",
+                        value: formatHours(
+                            stats?.play_time?.buildbattle_doubles
+                        ),
                     },
                     {
                         name: "Construções Perfeitas",

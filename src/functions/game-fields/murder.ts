@@ -1,3 +1,4 @@
+import formatHours from "../formatHours";
 import getRate from "../getRate";
 
 /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
@@ -59,6 +60,10 @@ export default function getMurderFields(stats: Record<string, any>): GameStats {
                     {
                         name: "Mortes",
                         value: stats?.murder?.deaths ?? 0,
+                    },
+                    {
+                        name: "Tempo de Jogo",
+                        value: formatHours(stats?.play_time?.murder),
                     },
                     {
                         name: "Winstreak",

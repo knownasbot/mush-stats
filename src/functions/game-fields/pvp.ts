@@ -1,3 +1,4 @@
+import formatHours from "../formatHours";
 import getRate from "../getRate";
 
 /**
@@ -58,6 +59,10 @@ export default function getPvPFields(stats: Record<string, any>): GameStats {
                         value: totalDeaths,
                     },
                     {
+                        name: "Tempo de Jogo",
+                        value: formatHours(stats?.play_time?.pvp),
+                    },
+                    {
                         name: "K/D",
                         value: getRate(totalKills, totalDeaths),
                     },
@@ -73,6 +78,10 @@ export default function getPvPFields(stats: Record<string, any>): GameStats {
                     {
                         name: "Mortes",
                         value: stats?.pvp?.arena_deaths ?? 0,
+                    },
+                    {
+                        name: "Tempo de Jogo",
+                        value: formatHours(stats?.play_time?.pvp_arena),
                     },
                     {
                         name: "Killstreak",
@@ -103,6 +112,10 @@ export default function getPvPFields(stats: Record<string, any>): GameStats {
                         value: stats?.pvp?.fps_deaths ?? 0,
                     },
                     {
+                        name: "Tempo de Jogo",
+                        value: formatHours(stats?.play_time?.pvp_fps),
+                    },
+                    {
                         name: "Killstreak",
                         value: stats?.pvp?.fps_killstreak ?? 0,
                     },
@@ -129,6 +142,10 @@ export default function getPvPFields(stats: Record<string, any>): GameStats {
                     {
                         name: "Erros",
                         value: stats?.pvp?.mlg_misses ?? 0,
+                    },
+                    {
+                        name: "Tempo de Jogo",
+                        value: formatHours(stats?.play_time?.pvp_mlg),
                     },
                     {
                         name: "Sequência no Nivel I",
